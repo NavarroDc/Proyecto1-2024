@@ -8,18 +8,18 @@ using namespace std;
 int main()
 {
     int opcionElegida;
-    string cedula;
+    int cedula;
     string nombreCompleto;
     float talla;
     float peso;
     bool salir = false;
+    bool cedulaValida = false;
+    bool nombreValido = false;
 
     setlocale(LC_ALL, "");
 
     do
-    {
-
-        cout<<"Cálculos de acuerdo al peso de la persona."<<endl;
+    {   cout<<"Cálculos de acuerdo al peso de la persona."<<endl;
         cout<<" "<<endl;
         cout<<"1. Ingresar datos de la persona."<<endl;
         cout<<"2. Ingresar datos físicos."<<endl;
@@ -40,7 +40,6 @@ int main()
             cin.ignore();
             system("Pause");
             system("CLS");
-
         }
         else
         {
@@ -49,14 +48,19 @@ int main()
 
             case 1:
             {
-               do{cout<<"Ingrese su número de cédulasss."<<endl;
-
-
-               }while()
+               do{cout<<"Ingrese su número de cédula."<<endl;
+               cin>>cedula;
+               if(cedula >= 10000000 && cedula<= 999999999){
+                cedulaValida = true;
+               }
+               else{
+                    cout<<"Sólo puede digitar números en el apartado de la cédula."<<endl;
+                    cin>>cedula;
+               }
+               }while(cedulaValida == false);
 
                 break;
-            }
-
+            }//-----------------------------------------------------------------------------------------------------------------------
             case 2:
             {
 
