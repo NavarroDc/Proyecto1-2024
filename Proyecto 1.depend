@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1708566873 source:c:\users\angel\downloads\introducci”n a la programaci”n\proyecto 1\main.cpp
+	<iostream>
+	<wchar.h>
+	<locale.h>
+	<limits>
+
+1708620172 source:c:\users\angel\onedrive\documentos\github\proyecto 1 - git\main.cpp
+	<iostream>
+	<wchar.h>
+	<locale.h>
+	<limits>
+
