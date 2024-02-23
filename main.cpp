@@ -55,6 +55,8 @@ int main()
                 int contadorEspacios = 0;
 
                 cout<<"Ingrese su número de cédula."<<endl;
+                cin.clear();
+                cin.ignore();
                 cin>>cedula;
 
                 do
@@ -72,8 +74,6 @@ int main()
                         cin.clear();
                         cin.ignore();
                         cin>>cedula;
-                        system("Pause");
-
                     }
 
 
