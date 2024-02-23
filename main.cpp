@@ -15,11 +15,13 @@ int main()
     bool salir = false;
     bool cedulaValida = false;
     bool nombreValido = false;
+    bool continuar = false;
 
     setlocale(LC_ALL, "");
 
     do
-    {   cout<<"Cálculos de acuerdo al peso de la persona."<<endl;
+    {
+        cout<<"Cálculos de acuerdo al peso de la persona."<<endl;
         cout<<" "<<endl;
         cout<<"1. Ingresar datos de la persona."<<endl;
         cout<<"2. Ingresar datos físicos."<<endl;
@@ -35,7 +37,7 @@ int main()
 
         if(opcionErronea)
         {
-            cout<<"Opción inválidad, vuelva a intentarlo. Debe escribir un número del 1 al 5."<<endl;
+            cout<<"Opción inválida, vuelva a intentarlo. Debe escribir un número del 1 al 5."<<endl;
             cin.clear();
             cin.ignore();
             system("Pause");
@@ -48,52 +50,53 @@ int main()
 
             case 1:
             {
-               do{cout<<"Ingrese su número de cédula."<<endl;
-               cin>>cedula;
-               if(cedula >= 10000000 && cedula<= 999999999){
-                cedulaValida = true;
-               }
-               else{
-                    cout<<"Sólo puede digitar números en el apartado de la cédula."<<endl;
+                char espacio = ' ';
+                int contadorEspacios = 0;
+
+                    cout<<"Ingrese su número de cédula."<<endl;
                     cin>>cedula;
-               }
-               }while(cedulaValida == false);
+                    if(cedula >= 1 && cedula <= 999999999)
+                    {
+                     cedulaValida = true;
 
-                break;
-            }//-----------------------------------------------------------------------------------------------------------------------
-            case 2:
-            {
+                    }
+                    else{ do
+                             {
+                                cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
+                                cout<<" "<<endl;
+                                cout<<"Digite de nuevo la cédula."<<endl;
+                                cin>>cedula;
 
-                break;
+                             } while(continuar = false);
+                         }
+
+
+
+                      cout<<"Ingrese su nombre con dos apellidos."<<endl;
+                      cin>>nombreCompleto;
+                      for (char i : nombreCompleto)
+                      if (i == espacio)
+                      {
+                        nombreValido = true;
+                        contadorEspacios++;
+                      }
+
+                      do{ if (contadorEspacios != 2)
+                            {
+                                nombreValido = false;
+                                cout << "Debe ingresar únicamente su nombre con dos apellidos." << endl;
+                            }
+                        }while(nombreValido = false);
+
+                  break;
+              }
+
+
             }
-
-            case 3:
-            {
-                cout<<"op3"<<endl;
-                break;
-            }
-
-            case 4:
-            {
-                cout<<"op4"<<endl;
-                break;
-            }
-
-            case 5:
-            {
-                cout<<"Saliendo del programa..."<<endl;
-                salir = true;
-                break;
-            }
-            default:{cout<<"Opción inválidad, vuelva a intentarlo. Debe escribir un número del 1 al 5."<<endl;}
-            }
-
 
         }
-
-
     }
-    while(salir == false);
+    while(salir = false);
 
 
     return 0;
