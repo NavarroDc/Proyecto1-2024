@@ -48,48 +48,62 @@ int main()
             switch(opcionElegida)
             {
 
+//CASO 1 PEDIR CEDULA Y NOMBRE
             case 1:
             {
                 char espacio = ' ';
                 int contadorEspacios = 0;
 
-                    cout<<"Ingrese su número de cédula."<<endl;
-                    cin>>cedula;
+                cout<<"Ingrese su número de cédula."<<endl;
+                cin>>cedula;
+
+                do
+                {
                     if(cedula >= 1 && cedula <= 999999999)
                     {
-                     cedulaValida = true;
+                        cedulaValida = true;
 
                     }
-                    else{ do
-                             {
-                                cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
-                                cout<<" "<<endl;
-                                cout<<"Digite de nuevo la cédula."<<endl;
-                                cin>>cedula;
+                    else
+                    {   cedulaValida = false;
+                        cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
+                        cout<<" "<<endl;
+                        cout<<"Digite de nuevo la cédula."<<endl;
+                        cin.clear();
+                        cin.ignore();
+                        cin>>cedula;
+                        system("Pause");
 
-                             } while(continuar = false);
-                         }
+                    }
+
+
+                }
+                while(cedulaValida == false);
 
 
 
-                      cout<<"Ingrese su nombre con dos apellidos."<<endl;
-                      cin>>nombreCompleto;
-                      for (char i : nombreCompleto)
-                      if (i == espacio)
-                      {
+
+                cout<<"Ingrese su nombre con dos apellidos."<<endl;
+                cin>>nombreCompleto;
+                for (char i : nombreCompleto)
+                    if (i == espacio)
+                    {
                         nombreValido = true;
                         contadorEspacios++;
-                      }
+                    }
 
-                      do{ if (contadorEspacios != 2)
-                            {
-                                nombreValido = false;
-                                cout << "Debe ingresar únicamente su nombre con dos apellidos." << endl;
-                            }
-                        }while(nombreValido = false);
+                do
+                {
+                    if (contadorEspacios != 2)
+                    {
+                        nombreValido = false;
+                        cout << "Debe ingresar únicamente su nombre con dos apellidos." << endl;
+                    }
+                }
+                while(nombreValido = false);
 
-                  break;
-              }
+                break;
+            }
 
 
             }
