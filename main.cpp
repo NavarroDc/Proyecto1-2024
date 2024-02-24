@@ -107,7 +107,7 @@ int main() {
             }
 
         }
-    } while(salir = false);
+    } while(salir == false);
 
 
     return 0;
