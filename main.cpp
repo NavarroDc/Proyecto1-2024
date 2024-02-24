@@ -2,6 +2,8 @@
 #include <wchar.h>
 #include <locale.h>
 #include <limits>
+#include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -9,8 +11,8 @@ int main() {
     int opcionElegida;
     string cedula;
     string nombreCompleto;
-    float talla;
-    float peso;
+    float talla = 0.0;
+    float peso = 0.0;
     bool salir = false;
     bool cedulaValida = false;
     bool nombreValido = false;
@@ -56,13 +58,16 @@ int main() {
                     int numeroDigitos = 0;
 
 
-                    for ( char c : cedula) {
-                        if (isdigit(c)) {
-                            numeroDigitos++;
+                    for ( char c : cedula) { // Para cada caracter en cedula
+                        if (isdigit(c)) {//¿El caracter actual es un digito?
+                            numeroDigitos++;//Si lo es, el contador aumenta
                         }
                     }
+                    //Verifica que los digitos contados sea igual al tamaño de (cedula) y que esa cantidad de digitos esté entre 1 y 15
                     if (numeroDigitos == cedula.length() &&  numeroDigitos >= 1 && numeroDigitos <= 15) {
+                        //Si se cumple, la cédula es válida
                         cedulaValida = true;
+                        //Si no se cumple, debe escribir de nuevo la cédula
                     } else {
                         cedulaValida = false;
                         cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
@@ -76,7 +81,7 @@ int main() {
                 do {
                     cin.clear();
                     cin.ignore();
-                    getline (cin,nombreCompleto);
+                    getline (cin, nombreCompleto);
 
                     int contadorEspacios = 0;
                     //Loop for recorre lo que hay en nombreCompleto
@@ -100,9 +105,39 @@ int main() {
                     }
                     //¿El nombre es inválido? Si es inválido, se repite el lopp (do)
                 } while(nombreValido == false);
-
-
                 break;
+            }
+
+            case 2: {
+                bool tallaValida = false;
+                bool pesoValido = false;
+                string tallaString = "";
+                stringstream valorRedondeado;
+
+                cout<<"Ingrese su talla en metros."<<endl;
+
+                do {
+                    cin>>talla;
+                    int contadorTalla = 0;
+
+                    for(char c : tallaString) {
+                        if(isdigit(c) || c == '.') {
+                            contadorTalla++;
+                        }
+                    }
+
+                    if(contadorTalla == valorRedondeado.length()) {
+                        valorRedondeado<<setprecision(2) << stof(valorRedondeado);
+                        valorRedondeado>>talla;
+                        if(talla >= 0.30 && talla <= 3.00) {
+                            cout<<"La talla está en el rango."<<endl;
+                        } else {
+                            cout<<"La talla está en el rango."<<endl;
+                        }
+                    }else{
+                          cout<<"No es un número flotante válido."<<endl;
+                    }
+                } while(tallaValida == false);
             }
 
 
