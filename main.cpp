@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
     int opcionElegida;
-    int cedula;
+    string cedula;
     string nombreCompleto;
     float talla;
     float peso;
@@ -45,25 +45,25 @@ int main() {
             //CASO 1 PEDIR CEDULA Y NOMBRE
             case 1: {
                 char espacio = ' ';
-                cout<<"Ingrese su número de cédula."<<endl;
                 // Preguntar hasta que la cédula sea un número
                 do {
-                    cedula = 0;
+                    cout<<"Ingrese su número de cédula."<<endl;
+                    cedula = "";
                     cin.clear();
                     cin.ignore();
-                    cin>>cedula;
+                    getline(cin,cedula);
                     // ¿ la cédula son sólo números entre 1 a 9 dígitos ?
-                    if(cedula >= 1 && cedula <= 999999999) {
+                    int numeroDigitos = 0;
+                    for ( char c : cedula) {
+                        if (isdigit(c)) {
+                            numeroDigitos++;
+                        }
+                    }
+                    if (numeroDigitos == cedula.length() &&  numeroDigitos >= 1 && numeroDigitos <= 15) {
                         cedulaValida = true;
                     } else {
                         cedulaValida = false;
-
                         cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
-                        cout<<" "<<endl;
-                        cout<<"Digite de nuevo la cédula."<<endl;
-                        cin.clear();
-                        cin.ignore();
-                        cin>>cedula;
                     }
                     // ¿ La cédula es inválida ?
                 } while(cedulaValida == false);
