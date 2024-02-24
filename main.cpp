@@ -52,7 +52,6 @@ int main()
             case 1:
             {
                 char espacio = ' ';
-                int contadorEspacios = 0;
 
                 cout<<"Ingrese su número de cédula."<<endl;
                 cin.clear();
@@ -67,6 +66,7 @@ int main()
                     }
                     else {
                         cedulaValida = false;
+                        cedula = 0;
                         cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
                         cout<<" "<<endl;
                         cout<<"Digite de nuevo la cédula."<<endl;
@@ -81,7 +81,10 @@ int main()
 
                 // Preguntarle al usuario hassta que el nombre sea válido
                 do {
+                    cin.clear();
+                    cin.ignore();
                     cin>>nombreCompleto;
+                    int contadorEspacios = 0;
                     //Loop for recorre lo que hay en nombreCompleto
                     for (char i : nombreCompleto) {
                         //Condicional if indica que se encontró un espacio
@@ -94,7 +97,8 @@ int main()
                     //¿ la cantidad de espacio es diferente de 2 ?
                     if (contadorEspacios != 2) {
                         nombreValido = false;
-                        cout << "Debe ingresar únicamente su nombre con dos apellidos." << endl;
+                        nombreCompleto = ""; // limpiar el nombre para vaidarlo de nuevo
+                        cout << "Debe ingresar únicamente su nombre con dos apellidos. Nombre ingresado:" << nombreCompleto << endl;
                     }
                     else {
                         nombreValido = true;
