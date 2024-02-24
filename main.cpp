@@ -54,6 +54,8 @@ int main() {
                     getline(cin,cedula);
                     // ¿ la cédula son sólo números entre 1 a 9 dígitos ?
                     int numeroDigitos = 0;
+
+
                     for ( char c : cedula) {
                         if (isdigit(c)) {
                             numeroDigitos++;
@@ -68,7 +70,7 @@ int main() {
                     // ¿ La cédula es inválida ?
                 } while(cedulaValida == false);
 
-                cout<<"Ingrese su nombre con dos apellidos."<<endl;
+                cout<<"Ingrese su nombre con dos apellidos. "<<endl;
 
                 // Preguntarle al usuario hassta que el nombre sea válido
                 do {
