@@ -13,6 +13,7 @@ int main() {
     string nombreCompleto;
     float talla = 0.0f;
     float peso = 0.0f;
+    float imc = 0.0f;
     bool salir = false;
     bool cedulaValida = false;
     bool nombreValido = false;
@@ -111,7 +112,7 @@ int main() {
                 bool pesoValido = false;
                 string pesoString = "";
                 string tallaString = ""; // desde CIN
-                cout<<"Ingrese su talla en metros. "<<endl;
+                cout<<"Ingrese su talla en metros. Ejemplo: 1.80m "<<endl;
                 do {
                     talla = 0.0f;
                     tallaString= "";
@@ -167,13 +168,33 @@ int main() {
                             cout<<"El peso está en el rango. " << peso <<endl;
                             pesoValido = true;
                         } else {
-                            cout<<"El peso no está en el rango. " << talla <<endl;
+                            cout<<"El peso no está en el rango. " << peso <<endl;
                         }
                     } else {
                         cout<<"No es un número flotante válido."<<endl;
                         pesoValido = false;
                     }
                 } while(pesoValido == false);
+
+                break;
+            }
+
+            case 3: {
+
+                cout<<"Cálculo del índice de masa corporal."<<endl;
+                cout<<" "<<endl;
+                cout<<"El índice de masa corporal (IMC) se calcula según la siguiente fórmula: IMC = peso (kg)/ [estatura (m)]^2"<<endl;
+
+
+                imc = 0.0f;
+                //imcString = "";
+                cin.ignore();
+                std::setprecision(2);
+
+                imc = peso / (talla*talla);
+
+                cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
+
             }
             }
 
