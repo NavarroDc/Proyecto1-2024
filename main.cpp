@@ -19,7 +19,7 @@ int main() {
     bool continuar = false;
 
     do {
-        cout<<"C\xA0lculos de acuerdo al peso de la persona."<<endl;
+        cout<<"C\xA0lculoss de acuerdo al peso de la persona."<<endl;
         cout<<" "<<endl;
         cout<<"1. Ingresar datos de la persona."<<endl;
         cout<<"2. Ingresar datos físicos."<<endl;
@@ -108,13 +108,15 @@ int main() {
 
             case 2: {
                 bool tallaValida = false; //
+                bool pesoValido = false;
+                string pesoString = "";
                 string tallaString = ""; // desde CIN
                 cout<<"Ingrese su talla en metros. "<<endl;
                 do {
                     talla = 0.0f;
                     tallaString= "";
                     cin.ignore();
-                    std::setprecision(9);
+                    std::setprecision(2);
                     cin>>tallaString;
 
                     int contadorTalla = 0;
@@ -137,14 +139,42 @@ int main() {
                             cout<<"La talla no está en el rango. "<< talla <<endl;
                             tallaValida = false;
                         }
-                    } else{
-                          cout<<"No es un número flotante válido."<<endl;
-                          tallaValida = false;
+                    } else {
+                        cout<<"No es un número flotante válido."<<endl;
+                        tallaValida = false;
                     }
                 } while(tallaValida == false);
+
+                cout<<"Ingrese su peso corporal en kilogramos."<<endl;
+                do {
+                    peso = 0.0f;
+                    pesoString = "";
+                    cin.ignore();
+                    std::setprecision(2);
+                    cin>> pesoString;
+
+                    int contadorPeso = 0;
+
+                    for(char c : pesoString) {
+                        if(isdigit(c) || c == '.') {
+                            contadorPeso++;
+                        }
+                    }
+                    if(contadorPeso == pesoString.length()) {
+                        peso = stof(pesoString);
+
+                        if(peso >= 30 && peso <=350) {
+                            cout<<"El peso está en el rango. " << peso <<endl;
+                            pesoValido = true;
+                        } else {
+                            cout<<"El peso no está en el rango. " << talla <<endl;
+                        }
+                    } else {
+                        cout<<"No es un número flotante válido."<<endl;
+                        pesoValido = false;
+                    }
+                } while(pesoValido == false);
             }
-
-
             }
 
         }
