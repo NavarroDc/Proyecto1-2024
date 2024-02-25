@@ -109,31 +109,33 @@ int main() {
             }
 
             case 2: {
-                bool tallaValida = false; //
-                bool pesoValido = false;
-                string pesoString = "";
-                string tallaString = ""; // desde CIN
+
+                bool tallaValida = false; //Variable para continuar preguntando una talla válida en loop do/while
+                bool pesoValido = false; //Variable para continuar preguntando un peso válida en loop do/while
+                string pesoString = ""; //Variable de peso que ingresa el usuario para la conversión
+                string tallaString = ""; //Variable de talla que ingresa el usuario para la conversión
                 cout<<"Ingrese su talla en metros. Ejemplo: 1.80m "<<endl;
+
+                //Pregunta una talla hasta que sea válida
                 do {
-                    talla = 0.0f;
-                    tallaString= "";
-                    cin.ignore();
-                    std::setprecision(2);
+                    talla = 0.0f; //Se inicializa la variable talla en un número flotante
+                    tallaString= "";//Se inicializa en una string vacío lo que ingresa el usuario cada vez que se repite
+                    cin.ignore();//Ignorar el primer espacio en el dato ingresado
                     cin>>tallaString;
 
                     int contadorTalla = 0;
-
+                    //Ciclo for recorre cada caracter de la talla ingresada ´por el usuario
                     for(char c : tallaString) {
+                         //¿El caracter es un digito o un punto?
                         if(isdigit(c) || c == '.') {
+                            //Si lo hay el contador de talla aumenta +1
                             contadorTalla++;
                         }
                     }
-
+                    //¿El contador de talla contiene los mismo caracteres de tallaString?
                     if(contadorTalla == tallaString.length()) {
-                        talla = stof(tallaString);
-
-                        //cout << "Analizando.... " << tallaString << " ----> " << fixed <<  setprecision(2) << talla << endl;
-
+                        talla = stof(tallaString);//Convierte el string a un float
+                        //¿La talla está entre 0.30 y 3.00?
                         if(talla >= 0.30 && talla <= 3.00) {
                             cout<<"La talla está en el rango. " << talla <<endl;
                             cout<<" " <<endl;
@@ -203,13 +205,17 @@ int main() {
                 cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
 
                 if(imc < 18.5) {
+                    cout << " " << endl;
                     cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
                 } else if(imc >= 18.5 && imc <= 24.9) {
+                    cout << " " << endl;
                     cout<<"Se encuentra dentro del rango de peso normal o saludable."<<endl;
 
                 } else if(imc >= 25.0 && imc <= 29.9) {
+                    cout << " " << endl;
                     cout<<"Se encuentra dentro del rango de sobrepeso."<<endl;
                 } else {
+                    cout << " " << endl;
                     cout<<"Se encuentra dentro del rango de obesidad."<<endl;
                 }
                 system("Pause");
@@ -219,7 +225,7 @@ int main() {
 
         }
         system("CLS");
-        //system("Pause");
+
     } while(salir == false);
 
 
