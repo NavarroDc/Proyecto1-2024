@@ -215,7 +215,7 @@ int main() {
 
                     imc = peso / (talla*talla);//Fórmula imc
 
-                    cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
+                    cout<<"Su índice de masa corporal (IMC) es: "<<fixed<<setprecision(2)<<imc<<endl;
                     //¿El imc es menor a 18.5?
                     if(imc < 18.5) {
                         cout << " " << endl;
