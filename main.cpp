@@ -191,7 +191,7 @@ int main() {
 
                     } while(pesoValido == false);//El loop se va repetir mientras el peso sea inválido
 
-
+                  //¿Ya ingresó cédula y nombre?
                 } else {
                     cout<<"Error, debe ingresar la cédula y el nombre antes de ingresar a esta opción."<<endl;
                 }
@@ -200,6 +200,7 @@ int main() {
             }
 
             case 3: {
+                //¿Se ingresó talla y peso antes?
                 if(talla != 0.0 && peso != 0.0) {
 
                     cout<<"Cálculo del índice de masa corporal."<<endl;
@@ -215,21 +216,24 @@ int main() {
                     imc = peso / (talla*talla);//Fórmula imc
 
                     cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
-
+                    //¿El imc es menor a 18.5?
                     if(imc < 18.5) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
+                      //¿El imc está entre 18.5 y 24.9?
                     } else if(imc >= 18.5 && imc <= 24.9) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de peso normal o saludable."<<endl;
-
+                      //¿El imc está entre 25.0 y 29.9?
                     } else if(imc >= 25.0 && imc <= 29.9) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de sobrepeso."<<endl;
+                      //¿El imc es mayor a 30.0?
                     } else {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de obesidad."<<endl;
                     }
+                  //¿Ya ingresó talla y peso?
                 } else {
                     cout<<"Error, debe ingresar la talla y el peso antes de ingresar a esta opción."<<endl;
                 }
