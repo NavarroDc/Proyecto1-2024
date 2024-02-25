@@ -192,7 +192,7 @@ int main() {
                     } while(pesoValido == false);//El loop se va repetir mientras el peso sea inválido
 
 
-                }else{
+                } else {
                     cout<<"Error, debe ingresar la cédula y el nombre antes de ingresar a esta opción."<<endl;
                 }
                 system("Pause");
@@ -200,38 +200,43 @@ int main() {
             }
 
             case 3: {
+                if(talla != 0.0 && peso != 0.0) {
 
-                cout<<"Cálculo del índice de masa corporal."<<endl;
-                cout<<" "<<endl;
-                cout<<"El índice de masa corporal (IMC) se calcula según la siguiente fórmula: IMC = peso (kg)/ [estatura (m)]^2"<<endl;
+                    cout<<"Cálculo del índice de masa corporal."<<endl;
+                    cout<<" "<<endl;
+                    cout<<"El índice de masa corporal (IMC) se calcula según la siguiente fórmula: IMC = peso (kg)/ [estatura (m)]^2"<<endl;
 
-                //Se limpia el imc cada vez que se repite
-                imc = 0.0f;
+                    //Se limpia el imc cada vez que se repite
+                    imc = 0.0f;
 
-                cin.ignore();
-                std::setprecision(2);//Para imprimir números a dos decimales
+                    cin.ignore();
+                    std::setprecision(2);//Para imprimir números a dos decimales
 
-                imc = peso / (talla*talla);//Fórmula imc
+                    imc = peso / (talla*talla);//Fórmula imc
 
-                cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
+                    cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
 
-                if(imc < 18.5) {
-                    cout << " " << endl;
-                    cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
-                } else if(imc >= 18.5 && imc <= 24.9) {
-                    cout << " " << endl;
-                    cout<<"Se encuentra dentro del rango de peso normal o saludable."<<endl;
+                    if(imc < 18.5) {
+                        cout << " " << endl;
+                        cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
+                    } else if(imc >= 18.5 && imc <= 24.9) {
+                        cout << " " << endl;
+                        cout<<"Se encuentra dentro del rango de peso normal o saludable."<<endl;
 
-                } else if(imc >= 25.0 && imc <= 29.9) {
-                    cout << " " << endl;
-                    cout<<"Se encuentra dentro del rango de sobrepeso."<<endl;
+                    } else if(imc >= 25.0 && imc <= 29.9) {
+                        cout << " " << endl;
+                        cout<<"Se encuentra dentro del rango de sobrepeso."<<endl;
+                    } else {
+                        cout << " " << endl;
+                        cout<<"Se encuentra dentro del rango de obesidad."<<endl;
+                    }
                 } else {
-                    cout << " " << endl;
-                    cout<<"Se encuentra dentro del rango de obesidad."<<endl;
+                    cout<<"Error, debe ingresar la talla y el peso antes de ingresar a esta opción."<<endl;
                 }
                 system("Pause");
                 break;
             }
+
             }
 
         }
