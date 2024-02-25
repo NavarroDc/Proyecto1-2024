@@ -11,17 +11,15 @@ int main() {
     int opcionElegida;
     string cedula;
     string nombreCompleto;
-    float talla = 0.0;
-    float peso = 0.0;
+    float talla = 0.0f;
+    float peso = 0.0f;
     bool salir = false;
     bool cedulaValida = false;
     bool nombreValido = false;
     bool continuar = false;
 
-    setlocale(LC_ALL, "");
-
     do {
-        cout<<"Cálculos de acuerdo al peso de la persona."<<endl;
+        cout<<"C\xA0lculos de acuerdo al peso de la persona."<<endl;
         cout<<" "<<endl;
         cout<<"1. Ingresar datos de la persona."<<endl;
         cout<<"2. Ingresar datos físicos."<<endl;
@@ -111,16 +109,14 @@ int main() {
             case 2: {
                 bool tallaValida = false; //
                 string tallaString = ""; // desde CIN
-                stringstream tallaRedondeadaSS; // para redondear la talla
-
                 cout<<"Ingrese su talla en metros. "<<endl;
-
                 do {
-                    talla = 0.0;
+                    talla = 0.0f;
                     tallaString= "";
-                    tallaRedondeadaSS.clear();
-
+                    cin.ignore();
+                    std::setprecision(9);
                     cin>>tallaString;
+
                     int contadorTalla = 0;
 
                     for(char c : tallaString) {
@@ -130,8 +126,10 @@ int main() {
                     }
 
                     if(contadorTalla == tallaString.length()) {
-                        tallaRedondeadaSS << fixed << setprecision(2) << stof(tallaString);
-                        tallaRedondeadaSS>>talla;
+                        talla = stof(tallaString);
+
+                        //cout << "Analizando.... " << tallaString << " ----> " << fixed <<  setprecision(2) << talla << endl;
+
                         if(talla >= 0.30 && talla <= 3.00) {
                             cout<<"La talla está en el rango. " << talla <<endl;
                             tallaValida = true;
