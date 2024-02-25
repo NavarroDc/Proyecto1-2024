@@ -140,11 +140,11 @@ int main() {
                             talla = stof(tallaString);//Convierte el string a un float
                             //¿La talla está entre 0.30 y 3.00?
                             if(talla >= 0.30 && talla <= 3.00) {
-                                cout<<"La talla está en el rango. " << talla <<endl;
+                                cout<<"La talla está en el rango. " <<fixed<<setprecision(2)<< talla <<endl;
                                 cout<<" " <<endl;
                                 tallaValida = true;
                             } else {
-                                cout<<"La talla no está en el rango. "<< talla <<endl;
+                                cout<<"La talla no está en el rango. "<<fixed<<setprecision(2)<< talla <<endl;
                                 cout<<" "<<endl;
 
                                 tallaValida = false;
@@ -178,10 +178,10 @@ int main() {
 
                             //¿El peso está entre 30 y 350?
                             if(peso >= 30 && peso <=350) {
-                                cout<<"El peso está en el rango. " << peso <<endl;
+                                cout<<"El peso está en el rango. " <<fixed<<setprecision(2)<< peso <<endl;
                                 pesoValido = true;
                             } else {
-                                cout<<"El peso no está en el rango. " << peso <<endl;
+                                cout<<"El peso no está en el rango. " <<fixed<<setprecision(2)<< peso <<endl;
                             }
                         } else {
                             cout<<"No es un número flotante válido."<<endl;
@@ -191,7 +191,7 @@ int main() {
 
                     } while(pesoValido == false);//El loop se va repetir mientras el peso sea inválido
 
-                  //¿Ya ingresó cédula y nombre?
+                    //¿Ya ingresó cédula y nombre?
                 } else {
                     cout<<"Error, debe ingresar la cédula y el nombre antes de ingresar a esta opción."<<endl;
                 }
@@ -220,22 +220,36 @@ int main() {
                     if(imc < 18.5) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
-                      //¿El imc está entre 18.5 y 24.9?
+                        //¿El imc está entre 18.5 y 24.9?
                     } else if(imc >= 18.5 && imc <= 24.9) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de peso normal o saludable."<<endl;
-                      //¿El imc está entre 25.0 y 29.9?
+                        //¿El imc está entre 25.0 y 29.9?
                     } else if(imc >= 25.0 && imc <= 29.9) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de sobrepeso."<<endl;
-                      //¿El imc es mayor a 30.0?
+                        //¿El imc es mayor a 30.0?
                     } else {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de obesidad."<<endl;
                     }
-                  //¿Ya ingresó talla y peso?
+                    //¿Ya ingresó talla y peso?
                 } else {
                     cout<<"Error, debe ingresar la talla y el peso antes de ingresar a esta opción."<<endl;
+                }
+                system("Pause");
+                break;
+            }
+
+            case 4: {
+                if(nombreCompleto.length() != 0 && cedula.length() != 0 && talla != 0.0 && peso != 0.0) {
+
+                        cout<<"Reporte de información del paciente."<<endl;
+                        cout<<fixed<<std::setprecision(2)<<talla<<endl;
+
+
+                } else {
+                    cout<<"Debe ingresar primero la información del paciente."<<endl;
                 }
                 system("Pause");
                 break;
