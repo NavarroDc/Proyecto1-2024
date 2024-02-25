@@ -20,7 +20,7 @@ int main() {
     bool continuar = false;
 
     do {
-        cout<<"C\xA0lculoss de acuerdo al peso de la persona."<<endl;
+        cout<<"C\xA0lculos de acuerdo al peso de la persona."<<endl;
         cout<<" "<<endl;
         cout<<"1. Ingresar datos de la persona."<<endl;
         cout<<"2. Ingresar datos físicos."<<endl;
@@ -81,6 +81,7 @@ int main() {
                     cin.clear();
                     cin.ignore();
                     getline (cin, nombreCompleto);
+                    system("CLS");
 
                     int contadorEspacios = 0;
                     //Loop for recorre lo que hay en nombreCompleto
@@ -135,9 +136,12 @@ int main() {
 
                         if(talla >= 0.30 && talla <= 3.00) {
                             cout<<"La talla está en el rango. " << talla <<endl;
+                            cout<<" " <<endl;
                             tallaValida = true;
                         } else {
                             cout<<"La talla no está en el rango. "<< talla <<endl;
+                            cout<<" "<<endl;
+
                             tallaValida = false;
                         }
                     } else {
@@ -173,9 +177,12 @@ int main() {
                     } else {
                         cout<<"No es un número flotante válido."<<endl;
                         pesoValido = false;
+
                     }
+
                 } while(pesoValido == false);
 
+                system("Pause");
                 break;
             }
 
@@ -187,7 +194,7 @@ int main() {
 
 
                 imc = 0.0f;
-                //imcString = "";
+
                 cin.ignore();
                 std::setprecision(2);
 
@@ -205,10 +212,14 @@ int main() {
                 } else {
                     cout<<"Se encuentra dentro del rango de obesidad."<<endl;
                 }
+                system("Pause");
+                break;
             }
             }
 
         }
+        system("CLS");
+        //system("Pause");
     } while(salir == false);
 
 
