@@ -109,15 +109,18 @@ int main() {
             }
 
             case 2: {
-                bool tallaValida = false;
-                bool pesoValido = false;
-                string tallaString = "";
-                stringstream valorRedondeado;
+                bool tallaValida = false; //
+                string tallaString = ""; // desde CIN
+                stringstream tallaRedondeadaSS; // para redondear la talla
 
-                cout<<"Ingrese su talla en metros."<<endl;
+                cout<<"Ingrese su talla en metros. "<<endl;
 
                 do {
-                    cin>>talla;
+                    talla = 0.0;
+                    tallaString= "";
+                    tallaRedondeadaSS.clear();
+
+                    cin>>tallaString;
                     int contadorTalla = 0;
 
                     for(char c : tallaString) {
@@ -126,16 +129,19 @@ int main() {
                         }
                     }
 
-                    if(contadorTalla == valorRedondeado.length()) {
-                        valorRedondeado<<setprecision(2) << stof(valorRedondeado);
-                        valorRedondeado>>talla;
+                    if(contadorTalla == tallaString.length()) {
+                        tallaRedondeadaSS << fixed << setprecision(2) << stof(tallaString);
+                        tallaRedondeadaSS>>talla;
                         if(talla >= 0.30 && talla <= 3.00) {
-                            cout<<"La talla está en el rango."<<endl;
+                            cout<<"La talla está en el rango. " << talla <<endl;
+                            tallaValida = true;
                         } else {
-                            cout<<"La talla está en el rango."<<endl;
+                            cout<<"La talla no está en el rango. "<< talla <<endl;
+                            tallaValida = false;
                         }
-                    }else{
+                    } else{
                           cout<<"No es un número flotante válido."<<endl;
+                          tallaValida = false;
                     }
                 } while(tallaValida == false);
             }
