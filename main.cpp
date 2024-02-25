@@ -126,7 +126,7 @@ int main() {
                     int contadorTalla = 0;
                     //Ciclo for recorre cada caracter de la talla ingresada ´por el usuario
                     for(char c : tallaString) {
-                         //¿El caracter es un digito o un punto?
+                        //¿El caracter es un digito o un punto?
                         if(isdigit(c) || c == '.') {
                             //Si lo hay el contador de talla aumenta +1
                             contadorTalla++;
@@ -150,26 +150,30 @@ int main() {
                         cout<<"No es un número flotante válido."<<endl;
                         tallaValida = false;
                     }
-                } while(tallaValida == false);
+                } while(tallaValida == false);//El loop do se repite mientras la talla sea inválida
 
                 cout<<"Ingrese su peso corporal en kilogramos."<<endl;
+                //Verifica un peso hasta que sea válido
                 do {
                     peso = 0.0f;
                     pesoString = "";
                     cin.ignore();
-                    std::setprecision(2);
                     cin>> pesoString;
-
+                    //Se limpia la variable
                     int contadorPeso = 0;
-
+                    //Recorre cada caracter de lo que ingresó el usuario
                     for(char c : pesoString) {
+                        //¿El caracter es un digito o un punto?
                         if(isdigit(c) || c == '.') {
+                            //Si lo es, el contador aumenta +1
                             contadorPeso++;
                         }
                     }
+                    //¿El contador peso contiene los mismos caracteres de pesoString?
                     if(contadorPeso == pesoString.length()) {
-                        peso = stof(pesoString);
+                        peso = stof(pesoString);//Convierte el string a float
 
+                        //¿El peso está entre 30 y 350?
                         if(peso >= 30 && peso <=350) {
                             cout<<"El peso está en el rango. " << peso <<endl;
                             pesoValido = true;
@@ -182,7 +186,7 @@ int main() {
 
                     }
 
-                } while(pesoValido == false);
+                } while(pesoValido == false);//El loop se va repetir mientras el peso sea inválido
 
                 system("Pause");
                 break;
@@ -194,13 +198,13 @@ int main() {
                 cout<<" "<<endl;
                 cout<<"El índice de masa corporal (IMC) se calcula según la siguiente fórmula: IMC = peso (kg)/ [estatura (m)]^2"<<endl;
 
-
+                //Se limpia el imc cada vez que se repite
                 imc = 0.0f;
 
                 cin.ignore();
-                std::setprecision(2);
+                std::setprecision(2);//Para imprimir números a dos decimales
 
-                imc = peso / (talla*talla);
+                imc = peso / (talla*talla);//Fórmula imc
 
                 cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
 
