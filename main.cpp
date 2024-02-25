@@ -195,6 +195,16 @@ int main() {
 
                 cout<<"Su índice de masa corporal (IMC) es: "<< imc <<endl;
 
+                if(imc < 18.5) {
+                    cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
+                } else if(imc >= 18.5 && imc <= 24.9) {
+                    cout<<"Se encuentra dentro del rango de peso normal o saludable."<<endl;
+
+                } else if(imc >= 25.0 && imc <= 29.9) {
+                    cout<<"Se encuentra dentro del rango de sobrepeso."<<endl;
+                } else {
+                    cout<<"Se encuentra dentro del rango de obesidad."<<endl;
+                }
             }
             }
 
