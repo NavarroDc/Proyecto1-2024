@@ -9,8 +9,8 @@ using namespace std;
 
 int main() {
     int opcionElegida;
-    string cedula;
-    string nombreCompleto;
+    string cedula = "";
+    string nombreCompleto = "";
     float talla = 0.0f;
     float peso = 0.0f;
     float imc = 0.0f;
@@ -110,84 +110,91 @@ int main() {
 
             case 2: {
 
-                bool tallaValida = false; //Variable para continuar preguntando una talla válida en loop do/while
-                bool pesoValido = false; //Variable para continuar preguntando un peso válida en loop do/while
-                string pesoString = ""; //Variable de peso que ingresa el usuario para la conversión
-                string tallaString = ""; //Variable de talla que ingresa el usuario para la conversión
-                cout<<"Ingrese su talla en metros. Ejemplo: 1.80m "<<endl;
+                //¿Se ingresó el nombre y la cédula en la opción 1?
+                if(nombreCompleto.length() != 0 && cedula.length() != 0) {
 
-                //Pregunta una talla hasta que sea válida
-                do {
-                    talla = 0.0f; //Se inicializa la variable talla en un número flotante
-                    tallaString= "";//Se inicializa en una string vacío lo que ingresa el usuario cada vez que se repite
-                    cin.ignore();//Ignorar el primer espacio en el dato ingresado
-                    cin>>tallaString;
+                    bool tallaValida = false; //Variable para continuar preguntando una talla válida en loop do/while
+                    bool pesoValido = false; //Variable para continuar preguntando un peso válida en loop do/while
+                    string pesoString = ""; //Variable de peso que ingresa el usuario para la conversión
+                    string tallaString = ""; //Variable de talla que ingresa el usuario para la conversión
+                    cout<<"Ingrese su talla en metros. Ejemplo: 1.80m "<<endl;
 
-                    int contadorTalla = 0;
-                    //Ciclo for recorre cada caracter de la talla ingresada ´por el usuario
-                    for(char c : tallaString) {
-                        //¿El caracter es un digito o un punto?
-                        if(isdigit(c) || c == '.') {
-                            //Si lo hay el contador de talla aumenta +1
-                            contadorTalla++;
+                    //Pregunta una talla hasta que sea válida
+                    do {
+                        talla = 0.0f; //Se inicializa la variable talla en un número flotante
+                        tallaString= "";//Se inicializa en una string vacío lo que ingresa el usuario cada vez que se repite
+                        cin.ignore();//Ignorar el primer espacio en el dato ingresado
+                        cin>>tallaString;
+
+                        int contadorTalla = 0;
+                        //Ciclo for recorre cada caracter de la talla ingresada ´por el usuario
+                        for(char c : tallaString) {
+                            //¿El caracter es un digito o un punto?
+                            if(isdigit(c) || c == '.') {
+                                //Si lo hay el contador de talla aumenta +1
+                                contadorTalla++;
+                            }
                         }
-                    }
-                    //¿El contador de talla contiene los mismo caracteres de tallaString?
-                    if(contadorTalla == tallaString.length()) {
-                        talla = stof(tallaString);//Convierte el string a un float
-                        //¿La talla está entre 0.30 y 3.00?
-                        if(talla >= 0.30 && talla <= 3.00) {
-                            cout<<"La talla está en el rango. " << talla <<endl;
-                            cout<<" " <<endl;
-                            tallaValida = true;
-                        } else {
-                            cout<<"La talla no está en el rango. "<< talla <<endl;
-                            cout<<" "<<endl;
+                        //¿El contador de talla contiene los mismo caracteres de tallaString?
+                        if(contadorTalla == tallaString.length()) {
+                            talla = stof(tallaString);//Convierte el string a un float
+                            //¿La talla está entre 0.30 y 3.00?
+                            if(talla >= 0.30 && talla <= 3.00) {
+                                cout<<"La talla está en el rango. " << talla <<endl;
+                                cout<<" " <<endl;
+                                tallaValida = true;
+                            } else {
+                                cout<<"La talla no está en el rango. "<< talla <<endl;
+                                cout<<" "<<endl;
 
+                                tallaValida = false;
+                            }
+                        } else {
+                            cout<<"No es un número flotante válido."<<endl;
                             tallaValida = false;
                         }
-                    } else {
-                        cout<<"No es un número flotante válido."<<endl;
-                        tallaValida = false;
-                    }
-                } while(tallaValida == false);//El loop do se repite mientras la talla sea inválida
+                    } while(tallaValida == false);//El loop do se repite mientras la talla sea inválida
 
-                cout<<"Ingrese su peso corporal en kilogramos."<<endl;
-                //Verifica un peso hasta que sea válido
-                do {
-                    peso = 0.0f;
-                    pesoString = "";
-                    cin.ignore();
-                    cin>> pesoString;
-                    //Se limpia la variable
-                    int contadorPeso = 0;
-                    //Recorre cada caracter de lo que ingresó el usuario
-                    for(char c : pesoString) {
-                        //¿El caracter es un digito o un punto?
-                        if(isdigit(c) || c == '.') {
-                            //Si lo es, el contador aumenta +1
-                            contadorPeso++;
+                    cout<<"Ingrese su peso corporal en kilogramos."<<endl;
+                    //Verifica un peso hasta que sea válido
+                    do {
+                        peso = 0.0f;
+                        pesoString = "";
+                        cin.ignore();
+                        cin>> pesoString;
+                        //Se limpia la variable
+                        int contadorPeso = 0;
+                        //Recorre cada caracter de lo que ingresó el usuario
+                        for(char c : pesoString) {
+                            //¿El caracter es un digito o un punto?
+                            if(isdigit(c) || c == '.') {
+                                //Si lo es, el contador aumenta +1
+                                contadorPeso++;
+                            }
                         }
-                    }
-                    //¿El contador peso contiene los mismos caracteres de pesoString?
-                    if(contadorPeso == pesoString.length()) {
-                        peso = stof(pesoString);//Convierte el string a float
+                        //¿El contador peso contiene los mismos caracteres de pesoString?
+                        if(contadorPeso == pesoString.length()) {
+                            peso = stof(pesoString);//Convierte el string a float
 
-                        //¿El peso está entre 30 y 350?
-                        if(peso >= 30 && peso <=350) {
-                            cout<<"El peso está en el rango. " << peso <<endl;
-                            pesoValido = true;
+                            //¿El peso está entre 30 y 350?
+                            if(peso >= 30 && peso <=350) {
+                                cout<<"El peso está en el rango. " << peso <<endl;
+                                pesoValido = true;
+                            } else {
+                                cout<<"El peso no está en el rango. " << peso <<endl;
+                            }
                         } else {
-                            cout<<"El peso no está en el rango. " << peso <<endl;
+                            cout<<"No es un número flotante válido."<<endl;
+                            pesoValido = false;
+
                         }
-                    } else {
-                        cout<<"No es un número flotante válido."<<endl;
-                        pesoValido = false;
 
-                    }
+                    } while(pesoValido == false);//El loop se va repetir mientras el peso sea inválido
 
-                } while(pesoValido == false);//El loop se va repetir mientras el peso sea inválido
 
+                }else{
+                    cout<<"Error, debe ingresar la cédula y el nombre antes de ingresar a esta opción."<<endl;
+                }
                 system("Pause");
                 break;
             }
