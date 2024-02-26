@@ -4,10 +4,16 @@
 #include <limits>
 #include <cmath>
 #include <iomanip>
+#include <windows.h>
 
 using namespace std;
 
 int main() {
+    SetConsoleCP(1252);
+    SetConsoleOutputCP(1252);
+    setlocale(LC_CTYPE,"Spanish");
+
+
     int opcionElegida;
     string cedula = "";
     string nombreCompleto = "";
@@ -20,22 +26,22 @@ int main() {
     bool continuar = false;
 
     do {
-        cout<<"C\xA0lculos de acuerdo al peso de la persona."<<endl;
+        cout<<"Cálculos de acuerdo al peso de la persona."<<endl;
         cout<<" "<<endl;
         cout<<"1. Ingresar datos de la persona."<<endl;
-        cout<<"2. Ingresar datos f\xA1sicos."<<endl;
-        cout<<"3. Calcular el \xA1ndice de masa corporal."<<endl;
-        cout<<"4. Reporte de informaci\xA2n del paciente."<<endl;
+        cout<<"2. Ingresar datos físicos."<<endl;
+        cout<<"3. Calcular el índice de masa corporal."<<endl;
+        cout<<"4. Reporte de información del paciente."<<endl;
         cout<<"5. Salir."<<endl;
         cout<<" "<<endl;
-        cout<<"Elija una opci\xA2n."<<endl;
+        cout<<"Elija una opción."<<endl;
         cin>>opcionElegida;
         system("Pause");
         system("CLS");
         bool opcionErronea = cin.bad() || !(opcionElegida >= 1 && opcionElegida <= 5);
 
         if(opcionErronea) {
-            cout<<"Opci\xA2n inv\xA0lida, vuelva a intentarlo. Debe escribir un n\xA3mero del 1 al 5."<<endl;
+            cout<<"Opción inválida, vuelva a intentarlo. Debe escribir un número del 1 al 5."<<endl;
             cin.clear();
             cin.ignore();
             system("Pause");
@@ -48,11 +54,12 @@ int main() {
                 char espacio = ' ';
                 // Preguntar hasta que la cédula sea un número
                 do {
-                    cout<<"Ingrese su n\xA3mero de c"<<(\x82)<<"ula."<<endl;
+                    cout<<"Ingrese su número de cédula."<<endl;
                     cedula = "";
                     cin.clear();
                     cin.ignore();
                     getline(cin,cedula);
+
                     // ¿ la cédula son sólo números entre 1 a 9 dígitos ?
                     int numeroDigitos = 0;
 
@@ -63,13 +70,15 @@ int main() {
                         }
                     }
                     //Verifica que los digitos contados sea igual al tamaño de (cedula) y que esa cantidad de digitos esté entre 1 y 15
-                    if (numeroDigitos == cedula.length() &&  numeroDigitos >= 1 && numeroDigitos <= 15 &&(cin.get() == '\n')) {
+                    if (numeroDigitos == cedula.length() &&  numeroDigitos >= 1 && numeroDigitos <= 15 ) {
                         //Si se cumple, la cédula es válida
                         cedulaValida = true;
                         //Si no se cumple, debe escribir de nuevo la cédula
                     } else {
                         cedulaValida = false;
-                        cout<<"Sólo puede ingresar números en el apartado de la c\x82dula."<<endl;
+                        cout<<"Sólo puede ingresar números en el apartado de la cédula."<<endl;
+                        cout<<" "<<endl;
+
                     }
                     // ¿ La cédula es inválida ?
                 } while(cedulaValida == false);
@@ -78,8 +87,8 @@ int main() {
 
                 // Preguntarle al usuario hassta que el nombre sea válido
                 do {
-                    cin.clear();
-                    cin.ignore();
+                    //cin.clear();
+                    //cin.ignore();
                     getline (cin, nombreCompleto);
                     system("CLS");
 
@@ -109,7 +118,6 @@ int main() {
             }
             //CASO 2 PEDIR TALLA Y PESO CORPORAL
             case 2: {
-
                 //¿Se ingresó el nombre y la cédula en la opción 1?
                 if(nombreCompleto.length() != 0 && cedula.length() != 0) {
 
@@ -117,7 +125,7 @@ int main() {
                     bool pesoValido = false; //Variable para continuar preguntando un peso válido en loop do/while
                     string pesoString = ""; //Variable de peso que ingresa el usuario para la conversión
                     string tallaString = ""; //Variable de talla que ingresa el usuario para la conversión
-                    cout<<"Ingrese su talla en metros. Ejemplo: 1.80m "<<endl;
+                    cout<<"Ingrese su talla en metros. Ejemplo: 1.80"<<endl;
 
                     //Pregunta una talla hasta que sea válida
                     do {
@@ -140,22 +148,23 @@ int main() {
                             talla = stof(tallaString);//Convierte el string a un float
                             //¿La talla está entre 0.30 y 3.00?
                             if(talla >= 0.30 && talla <= 3.00) {
-                                cout<<"La talla est\xA0 en el rango. " <<fixed<<setprecision(2)<< talla <<endl;
+                                cout<<"La talla está en el rango. " <<fixed<<setprecision(2)<< talla <<endl;
                                 cout<<" " <<endl;
                                 tallaValida = true;
                             } else {
-                                cout<<"La talla no est\xA0 en el rango. "<<fixed<<setprecision(2)<< talla <<endl;
+                                cout<<"La talla no está en el rango. "<<fixed<<setprecision(2)<< talla <<endl;
                                 cout<<" "<<endl;
 
                                 tallaValida = false;
                             }
                         } else {
-                            cout<<"No es un n\xA3mero flotante v\xA0lido."<<endl;
+                            cout<<"No es una talla válida."<<endl;
                             tallaValida = false;
                         }
                     } while(tallaValida == false);//El loop do se repite mientras la talla sea inválida
 
                     cout<<"Ingrese su peso corporal en kilogramos."<<endl;
+
                     //Verifica un peso hasta que sea válido
                     do {
                         peso = 0.0f;
@@ -178,13 +187,17 @@ int main() {
 
                             //¿El peso está entre 30 y 350?
                             if(peso >= 30 && peso <=350) {
-                                cout<<"El peso est\xA0 en el rango. " <<fixed<<setprecision(2)<< peso <<endl;
+                                cout<<" "<<endl;
+                                cout<<"El peso está en el rango. " <<fixed<<setprecision(2)<< peso <<endl;
+                                cout<<" "<<endl;
                                 pesoValido = true;
                             } else {
-                                cout<<"El peso no est\xA0 en el rango. " <<fixed<<setprecision(2)<< peso <<endl;
+                                cout<<" "<<endl;
+                                cout<<"El peso no está en el rango. " <<fixed<<setprecision(2)<< peso <<endl;
+                                cout<<" "<<endl;
                             }
                         } else {
-                            cout<<"No es un n\xA3mero flotante v\xA0lido."<<endl;
+                            cout<<"No es un peso válido."<<endl;
                             pesoValido = false;
 
                         }
@@ -193,19 +206,20 @@ int main() {
 
                     //¿Ya ingresó cédula y nombre?
                 } else {
-                    cout<<"Error, debe ingresar la c\x82dula y el nombre antes de ingresar a esta opci\xA2n."<<endl;
+                    cout<<"Error, debe ingresar la cédula y el nombre antes de ingresar a esta opción."<<endl;
                 }
                 system("Pause");
                 break;
             }
             //CASO 3 CÁLCULO DEL IMC
             case 3: {
+
                 //¿Se ingresó talla y peso antes?
                 if(talla != 0.0 && peso != 0.0) {
 
-                    cout<<"C\xA0lculo del \x82ndice de masa corporal."<<endl;
+                    cout<<"Cálculo del índice de masa corporal."<<endl;
                     cout<<" "<<endl;
-                    cout<<"El \xA1ndice de masa corporal (IMC) se calcula seg\xA3n la siguiente f\xA1rmula: IMC = peso (kg)/ [estatura (m)]^2"<<endl;
+                    cout<<"El índice de masa corporal (IMC) se calcula según la siguiente f\xA1rmula: IMC = peso (kg)/ [estatura (m)]^2"<<endl;
 
                     //Se limpia el imc cada vez que se repite
                     imc = 0.0f;
@@ -215,7 +229,7 @@ int main() {
 
                     imc = peso / (talla*talla);//Fórmula imc
 
-                    cout<<"Su \xA1ndice de masa corporal (IMC) es: "<<fixed<<setprecision(2)<<imc<<endl;
+                    cout<<"Su índice de masa corporal (IMC) es: "<<fixed<<setprecision(2)<<imc<<endl;
                     //¿El imc es menor a 18.5?
                     if(imc < 18.5) {
                         cout << " " << endl;
@@ -235,20 +249,21 @@ int main() {
                     }
                     //¿Ya ingresó talla y peso?
                 } else {
-                    cout<<"Error, debe ingresar la talla y el peso antes de ingresar a esta opci\xA2n."<<endl;
+                    cout<<"Error, debe ingresar la talla y el peso antes de ingresar a esta opción."<<endl;
                 }
                 system("Pause");
                 break;
             }
             //CASO 4 SE MUESTRA EL REPORTE
             case 4: {
+                //¿Los datos del paciente fueron ingresados?
                 if(nombreCompleto.length() != 0 && cedula.length() != 0 && talla != 0.0 && peso != 0.0) {
 
-                    cout<<"Reporte de informaci\xA2n del paciente."<<endl;
+                    cout<<"Reporte de información del paciente."<<endl;
                     cout<<" "<<endl;
-                    cout<<"C\xA0dula: "<< cedula <<endl;
+                    cout<<"Céduladula: "<< cedula <<endl;
                     cout<<" "<<endl;
-                    cout<<"Nombre: "<<" "<<nombreCompleto<<endl;
+                    cout<<"Nombre: "<<nombreCompleto<<endl;
                     cout<<" "<<endl;
                     cout<<"Peso: "<<peso<<" kg"<<endl;
                     cout<<" "<<endl;
@@ -256,8 +271,9 @@ int main() {
                     cout<<" "<<endl;
                     cout<<"IMC: "<<imc<<endl;
                     cout<<" "<<endl;
-                    cout<<"Diagn\xA2stico: "<<endl;
+                    cout<<"Diagnóstico: "<<endl;
                     cout<<" "<<endl;
+                    //¿El IMC se encuentra en los rangos correctos?
                     if(imc < 18.5) {
                         cout << " " << endl;
                         cout<<"Se encuentra dentro del rango de peso insuficiente."<<endl;
@@ -278,12 +294,19 @@ int main() {
                         cout<<"Se encuentra dentro del rango de obesidad."<<endl;
                         cout<<" "<<endl;
                     }
-
+                  //En caso de que no se ingrese a las opciones en orden
                 } else {
-                    cout<<"Debe ingresar primero la informaci\xA2n del paciente."<<endl;
+                    cout<<"Debe ingresar primero la información del paciente."<<endl;
                 }
                 system("Pause");
                 break;
+            }
+
+            case 5:{
+                //Salir del programa
+                cout<<"Saliendo del programa..."<<endl;
+                system("Pause");
+                salir = true;
             }
 
             }
